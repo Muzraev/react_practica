@@ -1,31 +1,42 @@
 import React from 'react';
 import './TechnologyCard.css';
 
-function TechnologyCard(props) {
-    let statusIcon = '';
-    let statusText = '';
+function TechnologyCard({ title, description, status, onStatusChange }) {
+    const handleClick = () => {
+        if (status === 'not-started') {
+            onStatusChange('in-progress');
+        } else if (status === 'in-progress') {
+            onStatusChange('completed');
+        } else {
+            onStatusChange('not-started');
+        }
+    };
+
+    let statusIcon = '❓';
+    let statusText = 'Неизвестно';
     
-    if (props.status === 'completed') {
+    if (status === 'completed') {
         statusIcon = '✅';
         statusText = 'Изучено';
-    } else if (props.status === 'in-progress') {
-        statusIcon = '⏳';
+    } else if (status === 'in-progress') {
+        statusIcon = '🔄';
         statusText = 'В процессе';
-    } else if (props.status === 'not-started') {
+    } else if (status === 'not-started') {
         statusIcon = '⏳';
         statusText = 'Не начато';
     }
 
     return (
-        <div className={`tech-card tech-card-${props.status}`}>
+        <div className={`tech-card tech-card-${status}`} onClick={handleClick}>
             <div className="tech-header">
-                <h3>{props.title}</h3>
+                <h3>{title}</h3>
                 <span className="icon">{statusIcon}</span>
             </div>
-            <p className="tech-description">{props.description}</p>
+            <p className="tech-description">{description}</p>
             <div className="tech-status">
                 Статус: {statusText}
             </div>
+            <p className="click-hint">Нажми чтобы изменить статус</p>
         </div>
     );
 }

@@ -50,4 +50,8 @@
     flex-direction: column;
     gap: 10px;
   }
+  
+  .action-buttons, .filter-options {
+    flex-direction: column;
+  }
 }
