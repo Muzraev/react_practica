@@ -1,7 +1,8 @@
 import React from 'react';
 import './TechnologyCard.css';
+import TechnologyNotes from './TechnologyNotes';
 
-function TechnologyCard({ title, description, status, onStatusChange }) {
+function TechnologyCard({ techId, title, description, status, notes, onStatusChange, onNotesChange }) {
     const handleClick = () => {
         if (status === 'not-started') {
             onStatusChange('in-progress');
@@ -27,16 +28,24 @@ function TechnologyCard({ title, description, status, onStatusChange }) {
     }
 
     return (
-        <div className={`tech-card tech-card-${status}`} onClick={handleClick}>
-            <div className="tech-header">
-                <h3>{title}</h3>
-                <span className="icon">{statusIcon}</span>
+        <div className={`tech-card tech-card-${status}`}>
+            <div className="tech-main" onClick={handleClick}>
+                <div className="tech-header">
+                    <h3>{title}</h3>
+                    <span className="icon">{statusIcon}</span>
+                </div>
+                <p className="tech-description">{description}</p>
+                <div className="tech-status">
+                    Статус: {statusText}
+                </div>
+                <p className="click-hint">Нажми чтобы изменить статус</p>
             </div>
-            <p className="tech-description">{description}</p>
-            <div className="tech-status">
-                Статус: {statusText}
-            </div>
-            <p className="click-hint">Нажми чтобы изменить статус</p>
+
+            <TechnologyNotes 
+                notes={notes}
+                onNotesChange={onNotesChange}
+                techId={techId}
+            />
         </div>
     );
 }

@@ -41,6 +41,35 @@
   gap: 15px;
 }
 
+/* Стили для поиска */
+.search-section {
+  background: white;
+  padding: 15px;
+  border-radius: 8px;
+  margin-bottom: 20px;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+}
+
+.search-box {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+}
+
+.search-box input {
+  flex: 1;
+  padding: 10px;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  font-size: 16px;
+}
+
+.search-count {
+  font-size: 14px;
+  color: #666;
+  white-space: nowrap;
+}
+
 @media (max-width: 600px) {
   .App {
     padding: 10px;
@@ -53,5 +82,14 @@
   
   .action-buttons, .filter-options {
     flex-direction: column;
+  }
+  
+  .search-box {
+    flex-direction: column;
+    gap: 10px;
+  }
+  
+  .search-count {
+    align-self: flex-start;
   }
 }

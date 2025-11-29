@@ -1,0 +1,33 @@
+.notes-section {
+    margin-top: 15px;
+    padding-top: 15px;
+    border-top: 1px solid #eee;
+}
+
+.notes-section h4 {
+    margin-bottom: 8px;
+    color: #333;
+    font-size: 14px;
+}
+
+.notes-section textarea {
+    width: 100%;
+    padding: 8px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    font-family: Arial, sans-serif;
+    resize: vertical;
+    font-size: 14px;
+}
+
+.notes-section textarea:focus {
+    outline: none;
+    border-color: #667eea;
+}
+
+.notes-hint {
+    font-size: 12px;
+    color: #888;
+    margin-top: 5px;
+    font-style: italic;
+}

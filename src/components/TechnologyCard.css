@@ -5,7 +5,6 @@
     margin: 10px 0;
     background-color: white;
     transition: all 0.3s ease;
-    cursor: pointer;
 }
 
 .tech-card:hover {
@@ -26,6 +25,10 @@
 .tech-card-not-started {
     border-left: 5px solid #ff6b6b;
     background-color: #fff0f0;
+}
+
+.tech-main {
+    cursor: pointer;
 }
 
 .tech-header {
