@@ -1,0 +1,151 @@
+.mass-status-editor {
+  background: white;
+  padding: 20px;
+  border-radius: 8px;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+  margin-bottom: 20px;
+}
+
+.mass-status-editor h3 {
+  margin-top: 0;
+  margin-bottom: 20px;
+  color: #333;
+  border-bottom: 2px solid #667eea;
+  padding-bottom: 10px;
+}
+
+.editor-controls {
+  display: flex;
+  gap: 15px;
+  align-items: flex-end;
+  margin-bottom: 20px;
+  flex-wrap: wrap;
+}
+
+.status-selector {
+  flex: 1;
+  min-width: 200px;
+}
+
+.status-selector label {
+  display: block;
+  margin-bottom: 5px;
+  font-weight: 600;
+  color: #333;
+}
+
+.status-selector select {
+  width: 100%;
+  padding: 8px;
+  border: 2px solid #e0e0e0;
+  border-radius: 4px;
+  font-size: 16px;
+}
+
+.technologies-list {
+  border: 1px solid #e0e0e0;
+  border-radius: 4px;
+  overflow: hidden;
+}
+
+.list-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 12px 15px;
+  background: #f8f9fa;
+  border-bottom: 1px solid #e0e0e0;
+}
+
+.select-all {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+.selected-count {
+  color: #666;
+  font-size: 14px;
+}
+
+.technologies-grid {
+  max-height: 300px;
+  overflow-y: auto;
+}
+
+.technology-checkbox {
+  padding: 10px 15px;
+  border-bottom: 1px solid #f0f0f0;
+  transition: background-color 0.2s;
+}
+
+.technology-checkbox:last-child {
+  border-bottom: none;
+}
+
+.technology-checkbox:hover {
+  background: #f8f9fa;
+}
+
+.technology-checkbox label {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  cursor: pointer;
+  margin: 0;
+}
+
+.tech-info {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex: 1;
+}
+
+.tech-title {
+  font-weight: 500;
+  color: #333;
+}
+
+.tech-status {
+  font-size: 14px;
+  padding: 2px 8px;
+  border-radius: 12px;
+  font-weight: 500;
+}
+
+.status-completed {
+  background: #e8f5e8;
+  color: #2e7d32;
+}
+
+.status-in-progress {
+  background: #fff3e0;
+  color: #ef6c00;
+}
+
+.status-not-started {
+  background: #ffebee;
+  color: #c62828;
+}
+
+.empty-state {
+  text-align: center;
+  padding: 40px;
+  color: #666;
+}
+
+@media (max-width: 768px) {
+  .editor-controls {
+    flex-direction: column;
+    align-items: stretch;
+  }
+  
+  .tech-info {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 5px;
+  }
+}

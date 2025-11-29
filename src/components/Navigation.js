@@ -8,7 +8,7 @@ function Navigation() {
     <nav className="main-navigation">
       <div className="nav-brand">
         <Link to="/">
-          <h2> Трекер технологий</h2>
+          <h2>Трекер технологий</h2>
         </Link>
       </div>
 
@@ -43,6 +43,14 @@ function Navigation() {
             className={location.pathname === '/add-technology' ? 'active' : ''}
           >
             Добавить технологию
+          </Link>
+        </li>
+        <li>
+          <Link
+            to="/data-management"
+            className={location.pathname === '/data-management' ? 'active' : ''}
+          >
+            Управление данными
           </Link>
         </li>
         <li>
