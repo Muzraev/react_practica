@@ -1,7 +1,14 @@
 import { useNavigate } from 'react-router-dom';
+import {
+  Container,
+  Paper,
+  Typography,
+  Box,
+  Button
+} from '@mui/material';
+import { ArrowBack } from '@mui/icons-material';
 import useTechnologies from '../hooks/useTechnologies';
 import TechnologyForm from '../components/TechnologyForm';
-import './AddTechnology.css';
 
 function AddTechnology() {
   const navigate = useNavigate();
@@ -24,17 +31,34 @@ function AddTechnology() {
   };
 
   return (
-    <div className="page">
-      <div className="page-header">
-        <h1>Добавить новую технологию</h1>
-        <p>Заполните форму ниже, чтобы добавить технологию в ваш трекер обучения</p>
-      </div>
+    <Container maxWidth="md" sx={{ py: 4 }}>
+      <Paper elevation={3} sx={{ p: 4 }}>
+        {/* Заголовок */}
+        <Box sx={{ display: 'flex', alignItems: 'center', mb: 3 }}>
+          <Button
+            startIcon={<ArrowBack />}
+            onClick={() => navigate('/technologies')}
+            sx={{ mr: 2 }}
+          >
+            Назад
+          </Button>
+          <Box>
+            <Typography variant="h3" component="h1" gutterBottom>
+              Добавить новую технологию
+            </Typography>
+            <Typography variant="h6" color="text.secondary">
+              Заполните форму ниже, чтобы добавить технологию в ваш трекер обучения
+            </Typography>
+          </Box>
+        </Box>
 
-      <TechnologyForm
-        onSave={handleSubmit}
-        onCancel={handleCancel}
-      />
-    </div>
+        {/* Форма */}
+        <TechnologyForm
+          onSave={handleSubmit}
+          onCancel={handleCancel}
+        />
+      </Paper>
+    </Container>
   );
 }
 

@@ -1,76 +1,173 @@
 import { Link, useLocation } from 'react-router-dom';
-import './Navigation.css';
+import {
+  AppBar,
+  Toolbar,
+  Typography,
+  Button,
+  Switch,
+  FormControlLabel,
+  Box,
+  useTheme,
+  useMediaQuery
+} from '@mui/material';
+import { Brightness4, Brightness7 } from '@mui/icons-material';
 
-function Navigation() {
+function Navigation({ isDarkMode, onToggleTheme }) {
   const location = useLocation();
+  const theme = useTheme();
+  const isMobile = useMediaQuery(theme.breakpoints.down('md'));
+
+  // Функция для проверки активного пути
+  const isActive = (path) => location.pathname === path;
 
   return (
-    <nav className="main-navigation">
-      <div className="nav-brand">
-        <Link to="/">
-          <h2>Трекер технологий</h2>
-        </Link>
-      </div>
+    <AppBar position="static" elevation={2}>
+      <Toolbar>
+        {/* Бренд/логотип */}
+        <Typography 
+          variant="h6" 
+          component={Link}
+          to="/"
+          sx={{ 
+            flexGrow: isMobile ? 1 : 0,
+            textDecoration: 'none',
+            color: 'inherit',
+            fontWeight: 700,
+            mr: 4
+          }}
+        >
+          Трекер технологий
+        </Typography>
 
-      <ul className="nav-menu">
-        <li>
-          <Link
+        {/* Навигационное меню */}
+        <Box sx={{ 
+          display: 'flex', 
+          flexGrow: 1,
+          gap: 1,
+          flexWrap: isMobile ? 'wrap' : 'nowrap',
+          justifyContent: isMobile ? 'center' : 'flex-start'
+        }}>
+          <Button
+            color="inherit"
+            component={Link}
             to="/"
-            className={location.pathname === '/' ? 'active' : ''}
+            variant={isActive('/') ? "outlined" : "text"}
+            size={isMobile ? "small" : "medium"}
           >
             Главная
-          </Link>
-        </li>
-        <li>
-          <Link
+          </Button>
+          
+          <Button
+            color="inherit"
+            component={Link}
             to="/technologies"
-            className={location.pathname === '/technologies' ? 'active' : ''}
+            variant={isActive('/technologies') ? "outlined" : "text"}
+            size={isMobile ? "small" : "medium"}
           >
             Все технологии
-          </Link>
-        </li>
-        <li>
-          <Link
+          </Button>
+          
+          <Button
+            color="inherit"
+            component={Link}
             to="/api-technologies"
-            className={location.pathname === '/api-technologies' ? 'active' : ''}
+            variant={isActive('/api-technologies') ? "outlined" : "text"}
+            size={isMobile ? "small" : "medium"}
           >
             Публичные технологии
-          </Link>
-        </li>
-        <li>
-          <Link
+          </Button>
+          
+          <Button
+            color="inherit"
+            component={Link}
             to="/add-technology"
-            className={location.pathname === '/add-technology' ? 'active' : ''}
+            variant={isActive('/add-technology') ? "outlined" : "text"}
+            size={isMobile ? "small" : "medium"}
           >
-            Добавить технологию
-          </Link>
-        </li>
-        <li>
-          <Link
+            Добавить
+          </Button>
+          
+          <Button
+            color="inherit"
+            component={Link}
             to="/data-management"
-            className={location.pathname === '/data-management' ? 'active' : ''}
+            variant={isActive('/data-management') ? "outlined" : "text"}
+            size={isMobile ? "small" : "medium"}
           >
-            Управление данными
-          </Link>
-        </li>
-        <li>
-          <Link
+            Данные
+          </Button>
+          
+          <Button
+            color="inherit"
+            component={Link}
             to="/statistics"
-            className={location.pathname === '/statistics' ? 'active' : ''}
+            variant={isActive('/statistics') ? "outlined" : "text"}
+            size={isMobile ? "small" : "medium"}
           >
             Статистика
-          </Link>
-        </li>
-        <li>
-          <Link
+          </Button>
+        </Box>
+
+        {/* Переключатель темы и настройки */}
+        <Box sx={{ 
+          display: 'flex', 
+          alignItems: 'center', 
+          gap: 2,
+          ml: 2
+        }}>
+          {/* Переключатель темы */}
+          <FormControlLabel
+            control={
+              <Switch
+                checked={isDarkMode}
+                onChange={onToggleTheme}
+                icon={<Brightness7 sx={{ color: 'white' }} />}
+                checkedIcon={<Brightness4 />}
+                size="small"
+              />
+            }
+            label={isDarkMode ? 'Тёмная' : 'Светлая'}
+            sx={{ 
+              color: 'white',
+              '& .MuiFormControlLabel-label': {
+                fontSize: '0.875rem',
+                display: isMobile ? 'none' : 'block'
+              }
+            }}
+          />
+
+          {/* Кнопка настроек */}
+          <Button
+            color="inherit"
+            component={Link}
             to="/settings"
-            className={location.pathname === '/settings' ? 'active' : ''}
+            variant={isActive('/settings') ? "outlined" : "text"}
+            size={isMobile ? "small" : "medium"}
+            sx={{ 
+              minWidth: 'auto',
+              display: isMobile ? 'none' : 'block'
+            }}
           >
             Настройки
-          </Link>
-        </li>
-      </ul>
-    </nav>
+          </Button>
+
+          {/* Иконка настроек для мобильных */}
+          <Button
+            color="inherit"
+            component={Link}
+            to="/settings"
+            variant={isActive('/settings') ? "outlined" : "text"}
+            size="small"
+            sx={{ 
+              minWidth: 'auto',
+              display: isMobile ? 'block' : 'none'
+            }}
+          >
+            ⚙️
+          </Button>
+        </Box>
+      </Toolbar>
+    </AppBar>
   );
 }
 

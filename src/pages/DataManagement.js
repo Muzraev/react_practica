@@ -1,10 +1,21 @@
 import { useState } from 'react';
 import { Link } from 'react-router-dom';
+import {
+  Container,
+  Paper,
+  Typography,
+  Box,
+  Button,
+  Grid,
+  Card,
+  CardContent,
+  Chip
+} from '@mui/material';
+import { ArrowBack } from '@mui/icons-material';
 import useTechnologies from '../hooks/useTechnologies';
 import MassStatusEditor from '../components/MassStatusEditor';
 import DataExporter from '../components/DataExporter';
 import DataImporter from '../components/DataImporter';
-import './DataManagement.css';
 
 function DataManagement() {
   const { technologies, updateStatus, addTechnology } = useTechnologies();
@@ -14,6 +25,7 @@ function DataManagement() {
     updates.forEach(({ techId, newStatus }) => {
       updateStatus(techId, newStatus);
     });
+    // Можно заменить alert на Snackbar (следующий шаг)
     alert(`Обновлено статусов: ${updates.length}`);
   };
 
@@ -32,39 +44,77 @@ function DataManagement() {
   };
 
   return (
-    <div className="page">
-      <div className="page-header">
-        <Link to="/" className="back-link">
-          ← Назад к трекеру
-        </Link>
-        <h1>🛠️ Управление данными</h1>
-        <p>
-          Массовое редактирование статусов, импорт и экспорт данных вашего трекера технологий.
-        </p>
-      </div>
+    <Container maxWidth="lg" sx={{ py: 4 }}>
+      {/* Заголовок */}
+      <Paper elevation={3} sx={{ p: 4, mb: 4 }}>
+        <Box sx={{ display: 'flex', alignItems: 'center', mb: 2 }}>
+          <Button
+            component={Link}
+            to="/"
+            startIcon={<ArrowBack />}
+            sx={{ mr: 2 }}
+          >
+            Назад к трекеру
+          </Button>
+        </Box>
+        
+        <Typography variant="h3" component="h1" gutterBottom>
+          🛠️ Управление данными
+        </Typography>
+        <Typography variant="h6" color="text.secondary">
+          Массовое редактирование статусов, импорт и экспорт данных вашего трекера технологий
+        </Typography>
+      </Paper>
 
-      <div className="data-management-grid">
-        <div className="management-section">
-          <MassStatusEditor 
-            technologies={technologies}
-            onUpdateStatuses={handleMassStatusUpdate}
+      <Grid container spacing={3}>
+        {/* Массовое редактирование статусов */}
+        <Grid item xs={12} lg={6}>
+          <Card elevation={2}>
+            <CardContent>
+              <MassStatusEditor 
+                technologies={technologies}
+                onUpdateStatuses={handleMassStatusUpdate}
+              />
+            </CardContent>
+          </Card>
+        </Grid>
+
+        {/* Экспорт данных */}
+        <Grid item xs={12} lg={6}>
+          <Card elevation={2}>
+            <CardContent>
+              <DataExporter technologies={technologies} />
+            </CardContent>
+          </Card>
+        </Grid>
+
+        {/* Импорт данных */}
+        <Grid item xs={12}>
+          <Card elevation={2}>
+            <CardContent>
+              <DataImporter onImport={handleImport} />
+            </CardContent>
+          </Card>
+        </Grid>
+      </Grid>
+
+      {/* Статистика импорта */}
+      <Paper elevation={1} sx={{ p: 3, mt: 4, textAlign: 'center' }}>
+        <Typography variant="h6" gutterBottom>
+          Статистика импорта
+        </Typography>
+        <Box sx={{ display: 'flex', alignItems: 'center', justifyContent: 'center', gap: 1 }}>
+          <Typography variant="body1">
+            Всего импортировано технологий:
+          </Typography>
+          <Chip 
+            label={importedCount} 
+            color="primary" 
+            variant="outlined"
           />
-        </div>
-
-        <div className="management-section">
-          <DataExporter technologies={technologies} />
-        </div>
-
-        <div className="management-section">
-          <DataImporter onImport={handleImport} />
-        </div>
-      </div>
-
-      <div className="import-stats">
-        <h3>Статистика импорта</h3>
-        <p>Всего импортировано технологий: <strong>{importedCount}</strong></p>
-      </div>
-    </div>
+        </Box>
+      </Paper>
+    </Container>
   );
 }
 
