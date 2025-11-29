@@ -6,6 +6,7 @@ import TechnologyDetail from './pages/TechnologyDetail';
 import AddTechnology from './pages/AddTechnology';
 import Statistics from './pages/Statistics';
 import Settings from './pages/Settings';
+import ApiTechnologies from './pages/ApiTechnologies';
 import './App.css';
 
 function App() {
@@ -20,6 +21,7 @@ function App() {
           <Route path="/add-technology" element={<AddTechnology />} />
           <Route path="/statistics" element={<Statistics />} />
           <Route path="/settings" element={<Settings />} />
+          <Route path="/api-technologies" element={<ApiTechnologies />} />
         </Routes>
       </div>
     </Router>

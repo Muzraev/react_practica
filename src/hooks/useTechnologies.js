@@ -62,6 +62,16 @@ function useTechnologies() {
     );
   };
 
+  const addTechnology = (techData) => {
+    const newTech = {
+      id: Date.now(),
+      ...techData,
+      notes: techData.notes || '',
+      resources: techData.resources || []
+    };
+    setTechnologies(prev => [...prev, newTech]);
+  };
+
   const markAllCompleted = () => {
     setTechnologies(prev => 
       prev.map(tech => ({ ...tech, status: 'completed' }))
@@ -98,6 +108,7 @@ function useTechnologies() {
     technologies,
     updateStatus,
     updateNotes,
+    addTechnology,
     markAllCompleted,
     resetAllStatuses,
     progress: calculateProgress(),

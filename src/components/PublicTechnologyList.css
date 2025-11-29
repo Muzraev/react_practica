@@ -1,0 +1,187 @@
+.public-technology-list {
+  padding: 20px;
+}
+
+.search-section {
+  margin-bottom: 30px;
+}
+
+.search-info {
+  margin-top: 10px;
+  color: #666;
+  font-size: 14px;
+}
+
+.technologies-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+  gap: 20px;
+}
+
+.public-technology-card {
+  border: 1px solid #e0e0e0;
+  border-radius: 12px;
+  padding: 20px;
+  background: white;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+  transition: transform 0.2s, box-shadow 0.2s;
+}
+
+.public-technology-card:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 16px rgba(0,0,0,0.15);
+}
+
+.tech-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  margin-bottom: 12px;
+}
+
+.tech-header h3 {
+  margin: 0;
+  color: #333;
+  font-size: 1.2em;
+}
+
+.difficulty {
+  padding: 4px 8px;
+  border-radius: 12px;
+  font-size: 12px;
+  font-weight: bold;
+}
+
+.difficulty-beginner {
+  background: #e8f5e8;
+  color: #2e7d32;
+}
+
+.difficulty-intermediate {
+  background: #fff3e0;
+  color: #ef6c00;
+}
+
+.difficulty-advanced {
+  background: #ffebee;
+  color: #c62828;
+}
+
+.tech-description {
+  color: #666;
+  line-height: 1.5;
+  margin-bottom: 15px;
+}
+
+.tech-meta {
+  margin-bottom: 15px;
+}
+
+.category {
+  display: inline-block;
+  background: #667eea;
+  color: white;
+  padding: 4px 12px;
+  border-radius: 16px;
+  font-size: 12px;
+  font-weight: bold;
+  margin-bottom: 8px;
+}
+
+.tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+}
+
+.tag {
+  background: #f0f0f0;
+  color: #666;
+  padding: 2px 8px;
+  border-radius: 10px;
+  font-size: 11px;
+}
+
+.tech-resources {
+  margin-bottom: 15px;
+}
+
+.tech-resources strong {
+  display: block;
+  margin-bottom: 8px;
+  color: #333;
+}
+
+.tech-resources ul {
+  margin: 0;
+  padding-left: 20px;
+}
+
+.tech-resources li {
+  margin-bottom: 4px;
+}
+
+.tech-resources a {
+  color: #667eea;
+  text-decoration: none;
+  font-size: 14px;
+}
+
+.tech-resources a:hover {
+  text-decoration: underline;
+}
+
+.import-button {
+  width: 100%;
+  padding: 12px;
+  background: #4CAF50;
+  color: white;
+  border: none;
+  border-radius: 6px;
+  font-size: 14px;
+  font-weight: bold;
+  cursor: pointer;
+  transition: background 0.3s;
+}
+
+.import-button:hover {
+  background: #45a049;
+}
+
+.public-technologies-loading,
+.public-technologies-error {
+  text-align: center;
+  padding: 40px;
+}
+
+.spinner {
+  border: 4px solid #f3f3f3;
+  border-top: 4px solid #667eea;
+  border-radius: 50%;
+  width: 40px;
+  height: 40px;
+  animation: spin 1s linear infinite;
+  margin: 0 auto 20px;
+}
+
+@keyframes spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
+.no-results {
+  text-align: center;
+  padding: 40px;
+  color: #666;
+}
+
+@media (max-width: 768px) {
+  .technologies-grid {
+    grid-template-columns: 1fr;
+  }
+  
+  .tech-header {
+    flex-direction: column;
+    gap: 10px;
+  }
+}

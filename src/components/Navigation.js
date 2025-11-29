@@ -8,7 +8,7 @@ function Navigation() {
     <nav className="main-navigation">
       <div className="nav-brand">
         <Link to="/">
-          <h2>🚀 Трекер технологий</h2>
+          <h2> Трекер технологий</h2>
         </Link>
       </div>
 
@@ -27,6 +27,14 @@ function Navigation() {
             className={location.pathname === '/technologies' ? 'active' : ''}
           >
             Все технологии
+          </Link>
+        </li>
+        <li>
+          <Link
+            to="/api-technologies"
+            className={location.pathname === '/api-technologies' ? 'active' : ''}
+          >
+            Публичные технологии
           </Link>
         </li>
         <li>
