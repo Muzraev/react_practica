@@ -1,67 +1,77 @@
 .tech-card {
-    border: 1px solid #ddd;
-    border-radius: 8px;
-    padding: 15px;
-    margin: 10px 0;
-    background-color: white;
-    transition: all 0.3s ease;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  padding: 15px;
+  margin: 10px 0;
+  background-color: white;
+  transition: all 0.3s ease;
 }
 
 .tech-card:hover {
-    transform: translateY(-2px);
-    box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+  transform: translateY(-2px);
+  box-shadow: 0 4px 8px rgba(0,0,0,0.1);
 }
 
 .tech-card-completed {
-    border-left: 5px solid #45b7d1;
-    background-color: #f0fff0;
+  border-left: 5px solid #45b7d1;
+  background-color: #f0fff0;
 }
 
 .tech-card-in-progress {
-    border-left: 5px solid #4ecdc4;
-    background-color: #fffaf0;
+  border-left: 5px solid #4ecdc4;
+  background-color: #fffaf0;
 }
 
 .tech-card-not-started {
-    border-left: 5px solid #ff6b6b;
-    background-color: #fff0f0;
+  border-left: 5px solid #ff6b6b;
+  background-color: #fff0f0;
 }
 
 .tech-main {
-    cursor: pointer;
+  cursor: pointer;
 }
 
 .tech-header {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
 }
 
 .tech-header h3 {
-    margin: 0;
-    color: #333;
+  margin: 0;
+  color: #333;
+}
+
+.tech-category {
+  display: inline-block;
+  background: #667eea;
+  color: white;
+  padding: 2px 8px;
+  border-radius: 12px;
+  font-size: 12px;
+  margin-top: 5px;
 }
 
 .icon {
-    font-size: 20px;
+  font-size: 20px;
 }
 
 .tech-description {
-    color: #666;
-    margin: 10px 0;
+  color: #666;
+  margin: 10px 0;
 }
 
 .tech-status {
-    padding: 5px 10px;
-    background-color: #eee;
-    border-radius: 4px;
-    display: inline-block;
-    font-size: 14px;
+  padding: 5px 10px;
+  background-color: #eee;
+  border-radius: 4px;
+  display: inline-block;
+  font-size: 14px;
 }
 
 .click-hint {
-    font-size: 12px;
-    color: #888;
-    margin: 5px 0 0 0;
-    font-style: italic;
+  font-size: 12px;
+  color: #888;
+  margin: 5px 0 0 0;
+  font-style: italic;
 }
